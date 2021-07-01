@@ -14,7 +14,7 @@ def union_all(dfs):
     for df in dfs:
         for col in column_superset:
             if col not in df.columns:
-                df = df.withColumn(func.lit(None).cast(types.NullType()))
+                df = df.withColumn(col, func.lit(None).cast(types.NullType()))
     return functools.reduce(lambda df1, df2: df1.union(df2.select(df1.columns)), dfs)
 
 
