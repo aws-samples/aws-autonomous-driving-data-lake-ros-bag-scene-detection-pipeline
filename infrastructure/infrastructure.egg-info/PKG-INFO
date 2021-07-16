@@ -6,7 +6,7 @@ Home-page: UNKNOWN
 Author: author
 License: UNKNOWN
 Description: 
-        # Welcome to your CDK Python project!
+        # Getting Started
         
         Initial Configuration
             Define 3 names for your infrastructure in config.json:
@@ -119,7 +119,15 @@ Description:
                      /vehicle/wheel_position_report         491 msgs    : dbw_mkz_msgs/WheelPositionReport             
                      /vehicle/wheel_speed_report            981 msgs    : dbw_mkz_msgs/WheelSpeedReport
                      
-                     
+        
+        
+        ## Security
+        
+        See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+        
+        ## License
+        
+        This library is licensed under the MIT-0 License. See the LICENSE file.
 Platform: UNKNOWN
 Classifier: Development Status :: 4 - Beta
 Classifier: Intended Audience :: Developers

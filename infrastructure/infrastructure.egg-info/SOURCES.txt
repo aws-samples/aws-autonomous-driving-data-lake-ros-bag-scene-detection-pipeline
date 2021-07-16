@@ -1,3 +1,4 @@
+LICENSE
 README.md
 setup.py
 infrastructure/emr_orchestration/__init__.py

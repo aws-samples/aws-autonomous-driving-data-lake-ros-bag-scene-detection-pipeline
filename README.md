@@ -61,9 +61,9 @@ After the init process completes and the virtualenv is created, you can use the 
 step to test deployment
 
 ```
-$ bash deploy.sh <aws-profile> <cdk-command> <build?>
+$ bash deploy.sh <cdk-command> <build?>
 
-$ bash deploy.sh default synth true
+$ bash deploy.sh synth true
 ```
 
 

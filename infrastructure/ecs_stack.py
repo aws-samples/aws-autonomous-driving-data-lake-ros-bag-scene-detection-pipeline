@@ -176,7 +176,20 @@ class Fargate(core.Stack):
 
         ecs_task_role.add_to_policy(
             aws_iam.PolicyStatement(
-                actions=["dynamodb:*"], resources=[dynamo_table.table_arn]
+                actions=[
+                    "dynamodb:BatchGet*",
+                    "dynamodb:DescribeStream",
+                    "dynamodb:DescribeTable",
+                    "dynamodb:Get*",
+                    "dynamodb:Query",
+                    "dynamodb:Scan",
+                    "dynamodb:BatchWrite*",
+                    "dynamodb:CreateTable",
+                    "dynamodb:Delete*",
+                    "dynamodb:Update*",
+                    "dynamodb:PutItem",
+                ],
+                resources=[dynamo_table.table_arn]
             )
         )
 
@@ -202,18 +215,11 @@ class Fargate(core.Stack):
 
         ecs_task_role.add_to_policy(
             aws_iam.PolicyStatement(
-                actions=["*"], resources=[access_point.access_point_arn]
-            )
-        )
-
-        ecs_task_role.add_to_policy(
-            aws_iam.PolicyStatement(
                 actions=[
                     "elasticfilesystem:ClientMount",
                     "elasticfilesystem:ClientWrite",
-                    "elasticfilesystem:DescribeMountTargets",
-                ],
-                resources=["*"],
+                    "elasticfilesystem:DescribeMountTargets"
+                ], resources=[access_point.access_point_arn]
             )
         )
 

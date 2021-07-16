@@ -65,7 +65,19 @@ class StepFunctionStack(core.Stack):
 
         emr_role.add_to_policy(
             aws_iam.PolicyStatement(
-                actions=["dynamodb:*"],
+                actions=[
+                    "dynamodb:BatchGet*",
+                    "dynamodb:DescribeStream",
+                    "dynamodb:DescribeTable",
+                    "dynamodb:Get*",
+                    "dynamodb:Query",
+                    "dynamodb:Scan",
+                    "dynamodb:BatchWrite*",
+                    "dynamodb:CreateTable",
+                    "dynamodb:Delete*",
+                    "dynamodb:Update*",
+                    "dynamodb:PutItem",
+                ],
                 resources=[dynamo_table.table_arn, dynamo_table_scenes.table_arn],
             )
         )
