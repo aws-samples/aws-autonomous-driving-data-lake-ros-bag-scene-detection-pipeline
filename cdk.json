@@ -1,0 +1,65 @@
+{
+  "app": "python3 app.py",
+  "context": {
+    "@aws-cdk/core:enableStackNameDuplicates": "false",
+    "aws-cdk:enableDiffNoFail": "true",
+    "config": {
+      "region": "eu-west-1",
+      "account_id": "",
+      "stack-id": "scene-detection",
+      "fargate": {
+        "image-name": "ros-topic-extraction",
+        "ecr-repository-name": "ros-topic-extraction",
+        "glue-db-name": "vsidata",
+        "cpu": 4096,
+        "memory-limit-mib": 30720,
+        "timeout-minutes": 30,
+        "s3-filters": {
+          "prefix": [],
+          "suffix": [
+            ".bag"
+          ]
+        },
+        "input-bucket-name": "rosbag-ingest",
+        "output-bucket-name": "rosbag-topics",
+        "environment-variables": {
+          "s3_source_prefix": "$.key"
+        },
+        "topics-to-extract": [
+          "/as_tx/objects",
+          "/gps",
+          "/imu_raw",
+          "/rgb_right_detections_only",
+          "/rgb_left_detections_only",
+          "/thermal_detections_only",
+          "/post_process/lane_points/rgb_front_left",
+          "/post_process/lane_points/rgb_front_right",
+          "/vehicle/steering_report"
+        ]
+      },
+      "emr": {
+        "CLUSTER_NAME": "scene-detection-emr",
+        "MASTER_INSTANCE_TYPE": "m5.xlarge",
+        "CORE_INSTANCE_TYPE": "m5.4xlarge",
+        "CORE_INSTANCE_COUNT": 3,
+        "CORE_INSTANCE_MARKET": "ON_DEMAND",
+        "TASK_INSTANCE_TYPE": "m5.4xlarge",
+        "TASK_INSTANCE_COUNT": 1,
+        "TASK_INSTANCE_MARKET": "SPOT",
+        "RELEASE_LABEL": "emr-6.2.0",
+        "APPLICATIONS": [
+          "Hadoop",
+          "Spark"
+        ],
+        "CONFIGURATION": [
+          {
+            "Classification": "spark",
+            "Properties": {
+              "maximizeResourceAllocation": "true"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
