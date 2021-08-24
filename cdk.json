@@ -5,7 +5,7 @@
     "aws-cdk:enableDiffNoFail": "true",
     "config": {
       "region": "eu-west-1",
-      "account_id": "537686541335",
+      "account_id": "",
       "stack-id": "scene-detection",
       "fargate": {
         "image-name": "ros-topic-extraction",
