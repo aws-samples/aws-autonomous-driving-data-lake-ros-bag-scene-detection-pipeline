@@ -1,7 +1,7 @@
 {
   "stack-id": "scene-detection",
   "fargate": {
-    "image-name": "ros-topic-extraction",
+    "image-name": "ros-image",
     "ecr-repository-name": "ros-topic-extraction",
     "glue-db-name": "vsidata",
     "cpu": 4096,
